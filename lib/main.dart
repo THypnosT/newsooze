@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newsooze/pagina_contenido/ajustes.dart';
 import 'package:newsooze/pagina_contenido/error.dart';
+import 'package:newsooze/pagina_contenido/feed.dart';
 
 void main() => runApp(MyApp());
 
@@ -100,7 +101,7 @@ Widget boton_log(context) {
       //FUNCION BOTON LOGIN
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => error()),
+        MaterialPageRoute(builder: (context) => feed()),
       );
     },
     child: Text("Login"),

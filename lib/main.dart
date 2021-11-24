@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newsooze/pagina_contenido/ajustes.dart';
+import 'package:newsooze/pagina_contenido/error.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,13 +28,16 @@ class _InicioState extends State<Inicio> {
         appBar: AppBar(
           title: Text("Newsooze"),
         ),
-        body: cuerpo());
+        body: cuerpo(context));
   }
 
-  Widget cuerpo() {
+  Widget cuerpo(context) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image: NetworkImage(""), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: NetworkImage(
+                  "https://png.pngtree.com/thumb_back/fw800/background/20210429/pngtree-manuscript-effect-vintage-paper-image_676909.jpg"),
+              fit: BoxFit.cover)),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +45,7 @@ class _InicioState extends State<Inicio> {
             text_inicio(),
             email(),
             clave(),
-            boton_log(),
+            boton_log(context),
             text_reg(),
             text_linkreg()
           ],
@@ -60,7 +65,7 @@ Widget text_inicio() {
 
 Widget email() {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
     child: TextField(
       decoration: InputDecoration(
         hintText: "Correo Electronico",
@@ -73,7 +78,7 @@ Widget email() {
 
 Widget clave() {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
     child: TextField(
       decoration: InputDecoration(
         hintText: "Clave",
@@ -84,7 +89,7 @@ Widget clave() {
   );
 }
 
-Widget boton_log() {
+Widget boton_log(context) {
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
@@ -93,6 +98,10 @@ Widget boton_log() {
         onSurface: Colors.deepOrange[700]),
     onPressed: () {
       //FUNCION BOTON LOGIN
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => error()),
+      );
     },
     child: Text("Login"),
   );
@@ -111,7 +120,5 @@ text_linkreg() {
       style: TextStyle(
         color: Colors.black,
         fontSize: 14,
-      )
-      
-      );
+      ));
 }
